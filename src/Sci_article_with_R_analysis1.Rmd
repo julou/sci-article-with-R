@@ -1,0 +1,58 @@
+---
+title: "My first analysis file"
+output: html_document
+output_dir: 'html'
+---
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(mydata)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+(myplots[['carat-histo']] <- 
+   mydata %>% 
+   # filter it and process it the way you need
+   identity() %>% 
+   ggplot() +
+   geom_freqpoly(aes(carat, ..density.., col=cut)) +
+   NULL
+)
+
+(myplots[['price-carat']] <- 
+    mydata %>% 
+    # filter it and process it the way you need
+    identity() %>%
+    (function(.df)
+      ggplot(.df, aes(carat, price)) +
+       geom_point(aes(col=cut), size=0.5, alpha=0.2, stroke=0,
+                  # show only 10% of the data (as an eye guide and to avoid inflating the plot size)
+                  data=.df %>% ungroup() %>% sample_frac(0.1)) +
+       geom_smooth(geom='line', col='gray10') +
+       guides(col=guide_legend(override.aes=list(size=2, alpha=1))) +
+       coord_cartesian(xlim=c(0, 2.5)) +
+       NULL )
+)
+
+# another plot that won't make it to the manuscript  
+  mydata %>% 
+  # filter it and process it the way you need
+  identity() %>% 
+ggplot(aes(carat, price)) +
+    geom_point(aes(col=cut), size=0.5, alpha=0.2, stroke=0) +
+    geom_smooth(col='gray10') +
+    guides(col=guide_legend(override.aes=list(size=2, alpha=1))) +
+    NULL
+
+
+```
+

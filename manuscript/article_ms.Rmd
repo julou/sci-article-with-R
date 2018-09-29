@@ -1,0 +1,61 @@
+---
+title: Title of submission to PLOS journal
+author:
+  - name: Alice Anonymous
+    email: alice@example.com
+    affiliation: Some Institute of Technology
+    corresponding: TRUE
+  - name: Bob Security
+    email: bob@example.com
+    affiliation: 
+      - Some Institute of Technology
+      - Another University
+address:
+  - code: Some Institute of Technology
+    address: Department, Street, City, State, Zip
+  - code: Another University
+    address: Department, Street, City, State, Zip
+abstract: |
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Nullam sapien tellus, commodo id velit id, eleifend volutpat quam. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
+  
+author_summary: |
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Nullam sapien tellus, commodo id velit id, eleifend volutpat quam. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
+
+# output: rticles::plos_article
+output:
+  bookdown::pdf_book:
+    base_format: rticles::plos_article
+bibliography: article_ms.bib
+csl: plos.csl
+
+header-includes:
+  \usepackage{xr} \externaldocument{article_SM}
+---
+
+<!-- _Text based on plos sample manuscript, see [http://journals.plos.org/ploscompbiol/s/latex](http://journals.plos.org/ploscompbiol/s/latex)_ -->
+
+# Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
+
+# Results
+This statement is shown in Fig. \@ref(fig:fig1).
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua (Fig. \@ref(fig:fig1), Fig. \@ref(fig:price-carat)).
+
+
+(ref:fig1-caption) A nice figure. A. Scatter plot. B. Marhginal distribution. C. *not ready yet*
+
+```{r fig1, out.width="100%", fig.cap='(ref:fig1-caption)'}
+knitr::include_graphics(here('plots', 'fig1.pdf'))
+```
+
+
+A list
+
+- Item 1
+- Item 2
+
+Here are two sample references: @Feynman1963118 [@Dirac1953888].
+
+# References {#references .unnumbered}

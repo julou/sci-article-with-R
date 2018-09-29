@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+manuscript/*.out
+manuscript/*.tex
+manuscript/*.aux
+manuscript/*.pdf

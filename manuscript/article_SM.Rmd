@@ -1,0 +1,49 @@
+---
+title: Supplementary Materials \newline
+  Title of submission to PLOS journal
+author:
+  - name: Alice Anonymous
+  - name: Bob Security
+
+# output: rticles::plos_article
+output:
+  bookdown::pdf_book:
+    base_format: rticles::plos_article
+csl: plos.csl
+bibliography: article_SM.bib
+
+header-includes:
+  \setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}}
+  \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}
+  \usepackage{float} \floatplacement{figure}{p}
+  \usepackage{xr} \externaldocument{article_SM}
+---
+
+
+```{r include=FALSE}
+# set graphics width for the entire document
+knitr::opts_chunk$set(out.width='4.75in')
+```
+
+# Item 1
+
+This correlation is clear (Fig. \@ref(fig:price-carat)).
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+# Item 2
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
+<!-- # Supplementary figures -->
+
+(ref:price-carat-caption) Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+```{r price-carat, fig.height=3.5*14/9, fig.cap="(ref:price-carat-caption)"}
+myplots[['price-carat']]
+```
+
+
+# References {#references .unnumbered}
