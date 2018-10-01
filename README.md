@@ -9,6 +9,8 @@ This is a template for an RStudio project with data analysis and manuscript writ
 - `sci_article_with_R.R` contains all command to load data, run the analysis by executing tye notebook files, and render the article by running the manuscript file.
 - it is recommended to create a `data` directory to store files with raw data; alternatively, it can be a symlink to a centralised data directory.
 
+NB: an additional benefit of putting script and manuscript files in subdirectories becomes obvious when the project relies on a dataset spread among many files (or with many files in the same directory); RStudio's "Find in files" becomes very slow if the data directory isn't excluded (even if it is a symlink), hence the convenience of searching within `src` or `manuscript`.
+
 
 ## Design choices
 
@@ -17,6 +19,7 @@ Although Rmarkdown makes it easy to analyse data and render reports / manuscript
 - the general workflow is organised as follow, in order to separate as much as possible code and writing:
     + data are loaded in the main R script `sci_article_with_R.R`.
     + various analysis are run in notebooks, possibly including tables / plots that won't make it to the final report; it is recommended to document the analysis strategy and the main conclusion at each point with short paragraphs.
+    + optionally the main figures are rendered as pdf in a dedicated R script (useful when they must be submitted separately).
     + manuscripts are written with minimal R code (calling already saved tables / plots) in order to maximise the readability.
 - render Rmarkdown analysis files from the command line so that they are all executed in the global environment; in particular this allows to structure the analysis in several files which can be rendered one after the other.
 - in order to avoid duplication of figures' code, I recommend to store figures used in the final reports / manuscript in a list (e.g. `myplots <- list()`); note that it is possible to print an object (in this case a plot) while assigning it to a variable by enclosing the expression in brackets: `(myplots[['carat-histo']] <- qplot(carat, data=diamonds))`
@@ -34,8 +37,8 @@ Although Rmarkdown makes it easy to analyse data and render reports / manuscript
 ## Writing the manuscript
 - use html syntax for comments (RStudio's shortcut is cmd-shift-C): `<!-- # this is a comment -->`
 - references are best achieved using bookdown's syntax `\@(fig:this-fig-label)` which also allows crossreferencing between files.
-- figures saved independently (e.g. or the main txt or prepared outside of R) should be included using `knitr::include_graphics()`
-- figures' captions are conveniently written using the syntax based on reference (allows to use markdown syntax in the caption):
+- figures saved independently (e.g. for the main text or prepared outside of R) should be included using `knitr::include_graphics()`
+- figures' captions are conveniently written using the syntax based on reference (which allows to use markdown syntax in the caption):
 
 ````
 (ref:this-fig-caption) A useful figure title.
