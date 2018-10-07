@@ -30,13 +30,13 @@ Although Rmarkdown makes it easy to analyse data and render reports / manuscript
 
 
 ## Polishing figures
-- the package `cowplot` provides a slick theme for publication-ready figures.
+- the package [`cowplot`](https://cran.r-project.org/web/packages/cowplot/index.html) provides a slick theme for publication-ready figures.
 - in order to use text and symbols (points, lines, strokes, etc) of compatible weight in the figure, it is convenient to keep the default base_size of the theme and to scale the entire figure. If the joural guidelines specify figures of 4.75 in width with font 9pt, knowing `cowplot`'s base_size is 14, the figure will be saved with width 4.75 * 14/9 and displayed with 4.75 in.
 - when many low opacity points are overlapped, it looks nicer to set `stroke = 0`.
 
 ## Writing the manuscript
 - use html syntax for comments (RStudio's shortcut is cmd-shift-C): `<!-- # this is a comment -->`
-- references are best achieved using bookdown's syntax `\@(fig:this-fig-label)` which also allows crossreferencing between files.
+- references are best achieved using [`bookdown`](https://bookdown.org/yihui/bookdown/)'s syntax `\@(fig:this-fig-label)` which also allows crossreferencing between files.
 - figures saved independently (e.g. for the main text or prepared outside of R) should be included using `knitr::include_graphics()`
 - figures' captions are conveniently written using the syntax based on reference (which allows to use markdown syntax in the caption):
 
@@ -49,5 +49,5 @@ knitr::include_graphics(here('plots', 'this_fig.pdf'))
 ```
 ````
 
-- citations are conveniently inserted (and the reference added to the .bib file) directly from a reference manager using the `citr` addin.
+- citations are conveniently inserted (and the reference added to the .bib file) directly from a reference manager using the [`citr`](https://github.com/crsh/citr) addin.
 
